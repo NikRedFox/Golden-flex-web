@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Logo from "../assets/Images/Golden-flex-logo.svg"
+import Logo from "../assets/images/Golden-flex-logo.svg"
 
 const SpalshContainer = styled.div`
     width: 100%;    

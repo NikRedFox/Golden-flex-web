@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import BackgroundImage from "../assets/Images/Art-deco-background.png"
+import BackgroundImage from "../assets/images/Art-deco-background.png"
 
 
 const BackgroundImg = styled.div`
   width: 100%;
-  height: 1023px;
+  height: 100vh;
   z-index: -1;
   background-image: url(${BackgroundImage});
   background-size: cover;
