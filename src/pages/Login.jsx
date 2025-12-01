@@ -1,9 +1,8 @@
 import styled from "styled-components"
-import InputImg from "../assets/images/Input-decor-normal.svg"
 import DivisoriaH from "../assets/images/Divisoria-horizontal.png"
-import DivisoriaV from "../assets/images/Divisoria-metade.svg"
 import { useState } from "react"
 import Button from "../components/Button"
+import Input from "../components/Input"
 
 const LoginContainer = styled.div`
     display: flex;
@@ -28,29 +27,6 @@ const LoginForm = styled.form`
     flex-direction: column;
     align-items: center;
     gap: 24px;
-`
-
-const LoginInputContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    
-    width: 300px;
-    
-    justify-content: center;
-    align-items: center;
-`
-
-const LoginInput = styled.input`
-    color: var(--color-primary-gold);
-    font-family: var(--Milonga);  
-    background-color: transparent;
-    font-size: var(--button);
-    border: none;
-    outline: none;
-`
-
-const InputDetail = styled.img`
-    width: 90%;
 `
 
 const DividerContainer = styled.div`
@@ -90,26 +66,9 @@ export default function Login(){
     return(
         <LoginContainer>
             <LoginHeadline>Estacionamento Golden Flex</LoginHeadline>
-            <LoginForm>
-                <LoginInputContainer>
-                    <LoginInput
-                        placeholder="Login"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <InputDetail src={InputImg}/>
-                </LoginInputContainer>
-                <LoginInputContainer>
-                    <LoginInput
-                        placeholder="Senha"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <InputDetail src={InputImg}/>
-                </LoginInputContainer>
-                
+            <LoginForm>                
+                <Input placeholder="Login" value={email} onChangeText={setEmail} normalizar={false} />
+                <Input placeholder="Senha" value={password} onChangeText={setPassword} normalizar={false} secure={true} />
                 <Button texto="Entrar" onCLick={() => {}}/>
             </LoginForm>
             <DividerContainer>
