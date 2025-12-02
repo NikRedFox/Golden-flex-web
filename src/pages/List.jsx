@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import api from "../api.js";
 
+import split from "../assets/images/Divisoria.svg";
+import divisoria from "../assets/images/Linhas-decor.svg";
 
-// import split from "../assets/buttonSplit.png";
-// import divisoria from "../assets/divisoriaLista.png";
-
-// import ModalEntrada from "../components/EntradaModal";
-// import ModalSaida from "../components/SaidaModal";
+import ModalEntrada from "../components/EntradaModal.jsx";
+import ModalSaida from "../components/SaidaModal.jsx";
 
 const ListaContainer = styled.div`
   min-height: 100vh;
@@ -94,7 +93,15 @@ export default function HomeLista() {
   };
 
   useEffect(() => {
-    loadVeiculos();
+    const fetchData = async () => {
+      try {
+        await loadVeiculos();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const handleEntrada = async () => {

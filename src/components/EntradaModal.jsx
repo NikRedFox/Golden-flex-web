@@ -1,0 +1,145 @@
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import api from "../api.js";
+
+import upperDetail from "../assets/images/Modal-decor.svg";
+import divisoria from "../assets/images/Divisoria.svg";
+import Button from "./Button";
+import InputProps from "./Input";
+
+const Overlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+`;
+
+const ModalContent = styled.div`
+  width: 420px;
+  height: 600px;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ModalBg = styled.img`
+  width: 100%;
+  height: 108px;
+  position: absolute;
+  top: 0;
+`;
+
+const TextModal = styled.p`
+  color: #E3B779;
+  font-size: 35px;
+  font-family: "Milonga";
+  margin-top: 150px;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+`;
+
+const SuccessBox = styled.div`
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-align: center;
+`;
+
+const SuccessText = styled.p`
+  color: #E3B779;
+  font-family: "Milonga";
+  font-size: 18px;
+  margin: 5px 0;
+`;
+
+const Divisoria = styled.img`
+  width: 200px;
+  height: 20px;
+  margin: 8px auto;
+`;
+
+export default function ModalEntrada({ visible, onConfirm, onCancel }) {
+  const [placa, setPlaca] = useState("");
+  const [carregando, setCarregando] = useState(false);
+  const [ultimaEntrada, setUltimaEntrada] = useState(null);
+
+  useEffect(() => {
+    if (!visible) {
+      setPlaca("");
+      setUltimaEntrada(null);
+    }
+  }, [visible]);
+
+  const handleConfirm = async () => {
+    const p = placa.trim();
+    if (!p) return;
+
+    try {
+      setCarregando(true);
+      const response = await api.post("/api/veiculos/entrada", { placa });
+      setUltimaEntrada(response.data.veiculo);
+      onConfirm?.();
+    } catch (err) {
+      console.error("Erro ao registrar entrada:", err);
+    } finally {
+      setCarregando(false);
+      setPlaca("");
+    }
+  };
+
+  if (!visible) return null;
+
+  return (
+    <Overlay onClick={onCancel}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
+        <ModalBg src={upperDetail} />
+
+        <TextModal>Entrada</TextModal>
+
+        <InputWrapper>
+          <InputProps
+            maxWidth="90%"
+            placeholder="Placa"
+            value={placa}
+            onChange={(e) => setPlaca(e.target.value)}
+            normalizar
+          />
+
+          <Button
+            texto={carregando ? "Espere..." : "Cadastro"}
+            disabled={carregando}
+            onClick={handleConfirm}
+          />
+
+          {ultimaEntrada && (
+            <SuccessBox>
+              <SuccessText>Cadastrado com sucesso</SuccessText>
+              <Divisoria src={divisoria} />
+
+              <SuccessText>Placa: {ultimaEntrada.placa}</SuccessText>
+              <SuccessText>Entrada: {ultimaEntrada.dataEntrada}</SuccessText>
+              <SuccessText>
+                Hora: {ultimaEntrada.horarioEntrada?.split(".")[0]}
+              </SuccessText>
+
+              <Divisoria src={divisoria} />
+            </SuccessBox>
+          )}
+        </InputWrapper>
+      </ModalContent>
+    </Overlay>
+  );
+}

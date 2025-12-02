@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import DivisoriaH from "../assets/images/Divisoria-horizontal.png"
 import { useState } from "react"
-import Button from "../components/Button"
-import Input from "../components/Input"
+import Button from "../components/Button.jsx"
+import Input from "../components/Input.jsx"
 
 const LoginContainer = styled.div`
     display: flex;

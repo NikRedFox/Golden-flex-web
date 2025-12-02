@@ -3,7 +3,7 @@ import InputImg from "../assets/images/Input-decor-normal.svg"
 
 const InputWrapper = styled.div`
   width: 100%;
-  max-width: ${(props) => props.maxWidth || "70%"};
+  max-width: ${(props) => props.$maxWidth || "70%"};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,7 @@ export default function InputProps({
   value,
   onChangeText,
   normalizar,
-  maxWidth,
+  $maxWidth,
   secure,  
 }) {
   const handleChange = (e) => {
@@ -46,7 +46,7 @@ export default function InputProps({
   };
 
   return (
-    <InputWrapper maxWidth={maxWidth}>
+    <InputWrapper $maxWidth={$maxWidth}>
       <Input
         placeholder={placeholder}
         value={value}
