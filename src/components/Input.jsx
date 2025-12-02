@@ -11,7 +11,7 @@ const InputWrapper = styled.div`
 
 const Input = styled.input`
   width: 100%;
-  color: #e3b779;
+  color: var(--color-primary-gold);
   font-size: 24px;
   font-family: "Milonga";
   padding-left: 12px; 
@@ -20,7 +20,7 @@ const Input = styled.input`
   outline: none;
 
   &::placeholder {
-    color: #e3b779;
+    color: var(--color-primary-gold);
   }
 `;
 
@@ -32,17 +32,19 @@ const LineImage = styled.img`
 export default function InputProps({
   placeholder,
   value,
-  onChangeText,
+  onChange,
   normalizar,
   $maxWidth,
   secure,  
 }) {
   const handleChange = (e) => {
-    let resultado = e.target.value;
+    let texto = e.target.value;
+
     if (normalizar) {
-      resultado = resultado.replace(/[^A-Za-z0-9]/g, "").toUpperCase();
+      texto = texto.replace(/[^A-Za-z0-9]/g, "").toUpperCase();
     }
-    onChangeText(resultado);
+
+    onChange(texto);
   };
 
   return (

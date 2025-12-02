@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import inputBg from '../assets/images/Input-decor-small.svg';
 
@@ -6,14 +5,15 @@ const InputWrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 40px;
-    position: relative;
+    /* margin-bottom: 40px; */
+    /* position: relative; */
 `;
 
 const LineImage = styled.img`
-  position: absolute;
-  bottom: 0;
+  /* position: absolute; */
+  /* bottom: 0; */
   width: 80%;
   height: 40px;
   pointer-events: none;
@@ -21,7 +21,7 @@ const LineImage = styled.img`
 
 const PickerContainer = styled.div`
   width: 80%;
-  padding-top: 10px;
+  /* padding-top: 10px; */
 `;
 
 const Select = styled.select`
@@ -30,7 +30,7 @@ const Select = styled.select`
   color: #E3B779;
   font-size: 30px;
   font-family: 'Milonga', cursive;
-  padding: 8px 10px;
+  /* padding: 8px 10px; */
   border: none;
   outline: none;
   appearance: none;

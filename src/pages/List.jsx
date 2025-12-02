@@ -18,7 +18,7 @@ const ListaContainer = styled.div`
 `;
 
 const Texto = styled.h1`
-  color: #e3b779;
+  color: var(--color-primary-gold);
   font-size: 60px;
   padding: 55px 0 6px 0;
   text-align: center;
@@ -41,20 +41,21 @@ const Divisoria = styled.img`
 `;
 
 const Placa = styled.p`
-  color: #e3b779;
+  color: var(--color-primary-gold);
   font-size: 25px;
   font-family: "Milonga";
 `;
 
 const Info = styled.p`
-  color: #e3b779;
+  color: var(--color-primary-gold);
   font-size: 20px;
   font-family: "Milonga";
 `;
 
 const ButtonContainer = styled.div`
-  height: 180px;
+  height: 130px;
   display: flex;
+  width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -65,14 +66,15 @@ const ButtonContainer = styled.div`
 const BglessButton = styled.button`
   background: none;
   border: none;
-  color: #e3b779;
+  color: var(--color-primary-gold);
   font-family: "Milonga";
   font-size: 30px;
   cursor: pointer;
+  width: 150px;
 `;
 
 const Split = styled.img`
-  height: 50px;
+  height: 100px;
 `;
 
 export default function HomeLista() {

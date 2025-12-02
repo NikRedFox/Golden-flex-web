@@ -20,33 +20,36 @@ const Overlay = styled.div`
 
 const ModalContent = styled.div`
   width: 420px;
-  height: 700px;
+  height: 600px;
   background-color: #1c1c1c;
   border-radius: 12px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 30px;
+  padding: 20px 0px 0px 0px;
 `;
 
 const ModalBg = styled.img`
   width: 100%;
-  height: 108px;
+  /* height: 108px; */
   position: absolute;
-  top: 0;
+  pointer-events: none;
+  top: 25%;
 `;
 
 const TextModal = styled.p`
-  color: #E3B779;
+  color: var(--color-primary-gold);
   font-size: 35px;
   font-family: "Milonga";
-  margin-top: 150px;
+  /* margin-top: 150px; */
 `;
 
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   gap: 20px;
   width: 100%;
   align-items: center;
@@ -60,7 +63,7 @@ const SuccessBox = styled.div`
 `;
 
 const SuccessText = styled.p`
-  color: #E3B779;
+  color: var(--color-primary-gold);
   font-family: "Milonga";
   font-size: 18px;
   margin: 5px 0;
@@ -70,6 +73,7 @@ const Divisoria = styled.img`
   width: 200px;
   height: 20px;
   margin: 8px auto;
+  pointer-events: none;
 `;
 
 export default function ModalSaida({ visible, onConfirm, onCancel }) {
@@ -85,7 +89,6 @@ export default function ModalSaida({ visible, onConfirm, onCancel }) {
     }
   }, [visible]);
 
-  // Carregar lista de carros
   useEffect(() => {
     if (visible) {
       api.get("/api/veiculos")

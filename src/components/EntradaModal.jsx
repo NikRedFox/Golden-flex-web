@@ -26,20 +26,23 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 30px;
+  padding: 50px 0px 0px 0px;
+  
 `;
 
 const ModalBg = styled.img`
   width: 100%;
-  height: 108px;
+  /* height: 108px; */
   position: absolute;
-  top: 0;
+  top: 25%;
 `;
 
 const TextModal = styled.p`
-  color: #E3B779;
+  color: var(--color-primary-gold);
   font-size: 35px;
   font-family: "Milonga";
-  margin-top: 150px;
+  /* margin-top: 150px; */
 `;
 
 const InputWrapper = styled.div`
@@ -59,11 +62,11 @@ const SuccessBox = styled.div`
 `;
 
 const SuccessText = styled.p`
-  color: #E3B779;
+  color: var(--color-primary-gold);
   font-family: "Milonga";
   font-size: 18px;
-  margin: 5px 0;
-`;
+  margin: 5px 0px;
+`
 
 const Divisoria = styled.img`
   width: 200px;
@@ -114,7 +117,7 @@ export default function ModalEntrada({ visible, onConfirm, onCancel }) {
             maxWidth="90%"
             placeholder="Placa"
             value={placa}
-            onChange={(e) => setPlaca(e.target.value)}
+            onChange={setPlaca}
             normalizar
           />
 
