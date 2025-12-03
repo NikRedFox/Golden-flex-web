@@ -2,7 +2,7 @@ import styled from "styled-components";
 import inputBg from '../assets/images/Input-decor-small.svg';
 
 const InputWrapper = styled.div`
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -28,7 +28,7 @@ const Select = styled.select`
   width: 100%;
   background: transparent;
   color: #E3B779;
-  font-size: 30px;
+  font-size: 25px;
   font-family: 'Milonga', cursive;
   /* padding: 8px 10px; */
   border: none;

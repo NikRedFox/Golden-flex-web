@@ -10,22 +10,60 @@ import ModalSaida from "../components/SaidaModal.jsx";
 
 const ListaContainer = styled.div`
   min-height: 100vh;
-  width: 100%;
-  
+  width: 100%;  
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const Texto = styled.h1`
-  color: var(--color-primary-gold);
-  font-size: 60px;
-  padding: 55px 0 6px 0;
-  text-align: center;
-  font-family: "ParkLaneNF";
+const ListaScroll = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-height: calc(100vh - 250px);
+  overflow-y: auto;
+  padding-bottom: 20px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-primary-gold);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #d9a74f;
+  }
+  
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-gold) transparent;
+
 `;
 
+const Texto = styled.h1`
+  color: var(--color-primary-gold);
+  font-size: var(--headline-02);
+  padding: 55px 0 6px 0;
+  text-align: center;
+  font-family: var(--Park-Lane);
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 const Card = styled.div`
+  justify-content: center;
+  /* align-items: center;   */
   padding: 16px;
   margin: 8px 16px;
   border-radius: 12px;
@@ -35,21 +73,23 @@ const Card = styled.div`
 `;
 
 const Divisoria = styled.img`
-  width: 90%;
+  width: 70%;
   align-self: center;
-  margin: 4px 0;
+  margin: 4px 0px;
 `;
 
 const Placa = styled.p`
   color: var(--color-primary-gold);
-  font-size: 25px;
-  font-family: "Milonga";
+  font-size: 20px;
+  font-family: var(--Milonga);
+  padding-left: 40px;
 `;
 
 const Info = styled.p`
   color: var(--color-primary-gold);
-  font-size: 20px;
-  font-family: "Milonga";
+  font-size: 16px;
+  font-family: var(--Milonga);
+  padding-left: 40px;
 `;
 
 const ButtonContainer = styled.div`
@@ -67,7 +107,7 @@ const BglessButton = styled.button`
   background: none;
   border: none;
   color: var(--color-primary-gold);
-  font-family: "Milonga";
+  font-family: var(--Milonga);
   font-size: 30px;
   cursor: pointer;
   width: 150px;
@@ -76,6 +116,8 @@ const BglessButton = styled.button`
 const Split = styled.img`
   height: 100px;
 `;
+
+
 
 export default function HomeLista() {
   const [item, setItem] = useState([]);
@@ -118,19 +160,18 @@ export default function HomeLista() {
     <ListaContainer>
       <Texto>Lista</Texto>
 
-      <div style={{ flex: 1, width: "100%" }}>
+      <ListaScroll>
         {item.map((item, index) => (
-          <div key={index}>
+          <CardContainer key={index}>
             <Card>
               <Placa>Placa: {item.placa}</Placa>
               <Info>Entrada: {item.dataEntrada}</Info>
               <Info>Hora: {item.horarioEntrada?.split(".")[0]}</Info>
             </Card>
-
             <Divisoria src={divisoria} />
-          </div>
+          </CardContainer>
         ))}
-      </div>
+      </ListaScroll>
 
       <ButtonContainer>
         <BglessButton onClick={abrirModalEntrada}>Entrada</BglessButton>

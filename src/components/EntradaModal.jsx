@@ -3,7 +3,7 @@ import styled from "styled-components";
 import api from "../api.js";
 
 import upperDetail from "../assets/images/Modal-decor.svg";
-import divisoria from "../assets/images/Divisoria.svg";
+import divisoria from "../assets/images/Linhas-decor.svg";
 import Button from "./Button";
 import InputProps from "./Input";
 
@@ -36,6 +36,7 @@ const ModalBg = styled.img`
   /* height: 108px; */
   position: absolute;
   top: 25%;
+
 `;
 
 const TextModal = styled.p`
@@ -52,19 +53,22 @@ const InputWrapper = styled.div`
   gap: 20px;
   width: 100%;
   margin-top: 20px;
+  z-index: 1;
 `;
 
 const SuccessBox = styled.div`
   margin-top: 12px;
   padding: 10px 14px;
   border-radius: 10px;
-  text-align: center;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const SuccessText = styled.p`
   color: var(--color-primary-gold);
   font-family: "Milonga";
-  font-size: 18px;
+  font-size: 16px;
   margin: 5px 0px;
 `
 
