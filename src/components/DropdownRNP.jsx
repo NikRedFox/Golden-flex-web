@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import inputBg from '../assets/images/Input-decor-small.svg';
+import { device } from "../layout/responsividade.js";
 
 const InputWrapper = styled.div`
     width: 80%;
@@ -7,21 +8,20 @@ const InputWrapper = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    /* margin-bottom: 40px; */
-    /* position: relative; */
 `;
 
 const LineImage = styled.img`
-  /* position: absolute; */
-  /* bottom: 0; */
   width: 80%;
   height: 40px;
   pointer-events: none;
+
+  @media ${device.mobile}{
+    height: 20px;
+  }  
 `;
 
 const PickerContainer = styled.div`
   width: 80%;
-  /* padding-top: 10px; */
 `;
 
 const Select = styled.select`
@@ -29,11 +29,14 @@ const Select = styled.select`
   background: transparent;
   color: #E3B779;
   font-size: 25px;
-  font-family: 'Milonga', cursive;
-  /* padding: 8px 10px; */
+  font-family: var(--Milonga);
   border: none;
   outline: none;
   appearance: none;
+
+  @media ${device.mobile}{
+    font-size: 18px;
+  }
 `;
 
 export default function PickerPlaca({ value, onChange, carros }) {

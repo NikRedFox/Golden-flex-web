@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import InputImg from "../assets/images/Input-decor-normal.svg"
+import { device } from "../layout/responsividade.js";
 
 const InputWrapper = styled.div`
   width: 100%;
@@ -18,6 +19,10 @@ const Input = styled.input`
   background: transparent;
   border: none;
   outline: none;
+
+  /* @media ${device.mobile}{
+    font-size: 20px;
+  } */
 
   &::placeholder {
     color: var(--color-primary-gold);

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import api from "../api.js";
+import {device} from "../layout/responsividade.js";
 
 import split from "../assets/images/Divisoria.svg";
 import divisoria from "../assets/images/Linhas-decor.svg";
@@ -25,6 +26,15 @@ const ListaScroll = styled.div`
   max-height: calc(100vh - 250px);
   overflow-y: auto;
   padding-bottom: 20px;
+
+  @media ${device.tablet}{
+    grid-template-columns: repeat(2, 1fr);
+
+  }
+  
+  @media ${device.mobile}{
+    grid-template-columns: repeat(1, 1fr);
+  }
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -54,6 +64,14 @@ const Texto = styled.h1`
   padding: 55px 0 6px 0;
   text-align: center;
   font-family: var(--Park-Lane);
+
+  @media ${device.tablet}{ 
+    padding: 45px 0 6px 0;
+  } 
+
+  @media ${device.mobile}{ 
+    padding: 45px 0 6px 0;
+  } 
 `;
 
 const CardContainer = styled.div`
@@ -63,13 +81,24 @@ const CardContainer = styled.div`
 
 const Card = styled.div`
   justify-content: center;
-  /* align-items: center;   */
   padding: 16px;
   margin: 8px 16px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @media ${device.tablet}{
+    width: 80%;
+    padding-left: 0px;
+    align-self: center;
+  }
+
+  @media ${device.mobile}{
+    width: 80%;
+    padding-left: 50px;
+    align-self: center;
+  }
 `;
 
 const Divisoria = styled.img`
@@ -83,6 +112,16 @@ const Placa = styled.p`
   font-size: 20px;
   font-family: var(--Milonga);
   padding-left: 40px;
+
+  @media ${device.tablet}{ 
+    padding-left: 20px;
+    font-size: 18px;
+  } 
+
+  @media ${device.mobile}{ 
+    padding-left: 30px;
+    padding: 0px;
+  } 
 `;
 
 const Info = styled.p`
@@ -90,6 +129,15 @@ const Info = styled.p`
   font-size: 16px;
   font-family: var(--Milonga);
   padding-left: 40px;
+
+  @media ${device.tablet}{ 
+    padding-left: 20px;
+    font-size: 16px;
+  } 
+
+  @media ${device.mobile}{ 
+    padding: 0px;
+  } 
 `;
 
 const ButtonContainer = styled.div`
@@ -111,13 +159,16 @@ const BglessButton = styled.button`
   font-size: 30px;
   cursor: pointer;
   width: 150px;
+
+  @media ${device.mobile}{
+    font-size: 24px;
+    width: 120px;
+  }
 `;
 
 const Split = styled.img`
   height: 100px;
 `;
-
-
 
 export default function HomeLista() {
   const [item, setItem] = useState([]);

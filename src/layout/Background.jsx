@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import BackgroundImage from "../assets/images/Art-deco-background.png"
+import {device} from "./responsividade.js"
 
 
 const BackgroundImg = styled.div`
@@ -18,6 +19,14 @@ const ContentSpace = styled.div`
   width: 722px;
   height: 100%;
   background-color: var(--color-secondary-black);
+
+  @media ${device.tablet}{
+      width: 60%;
+    }
+
+  @media ${device.mobile}{
+      width: 80%;
+    }
 `
 
 export default function Background({ children }) {

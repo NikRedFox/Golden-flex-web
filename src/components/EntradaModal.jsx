@@ -6,6 +6,7 @@ import upperDetail from "../assets/images/Modal-decor.svg";
 import divisoria from "../assets/images/Linhas-decor.svg";
 import Button from "./Button";
 import InputProps from "./Input";
+import { device } from "../layout/responsividade.js";
 
 const Overlay = styled.div`
   position: fixed;
@@ -28,12 +29,19 @@ const ModalContent = styled.div`
   align-items: center;
   gap: 30px;
   padding: 50px 0px 0px 0px;
+  border: 2px solid var(--color-primary-gold);
+
+  @media ${device.mobile}{
+    width: 80%;
+    height: 90%;
+    padding: 30px 0px 0px 0px;
+    gap: 20px;
+  }
   
 `;
 
 const ModalBg = styled.img`
   width: 100%;
-  /* height: 108px; */
   position: absolute;
   top: 25%;
 
@@ -43,7 +51,10 @@ const TextModal = styled.p`
   color: var(--color-primary-gold);
   font-size: 35px;
   font-family: "Milonga";
-  /* margin-top: 150px; */
+
+  @media ${device.mobile}{
+    font-size: 28px;
+  }
 `;
 
 const InputWrapper = styled.div`
@@ -54,6 +65,11 @@ const InputWrapper = styled.div`
   width: 100%;
   margin-top: 20px;
   z-index: 1;
+
+  @media ${device.mobile}{
+    gap: 15px;
+    margin-top: 10px;
+  }
 `;
 
 const SuccessBox = styled.div`

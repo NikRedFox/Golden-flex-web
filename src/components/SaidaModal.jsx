@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import api from "../api.js";
+import { device } from "../layout/responsividade.js";
 
 import upperDetail from "../assets/images/Modal-decor.svg";
 import divisoria from "../assets/images/Linhas-decor.svg";
 import Button from "./Button";
-// import Input from "./Input";
 import PickerPlaca from "./DropdownRNP.jsx";
 
 const Overlay = styled.div`
@@ -29,11 +29,18 @@ const ModalContent = styled.div`
   align-items: center;
   gap: 30px;
   padding: 20px 0px 0px 0px;
+  border: 2px solid var(--color-primary-gold);
+
+  @media ${device.mobile}{
+    width: 80%;
+    height: 90%;
+    padding: 30px 0px 0px 0px;
+    gap: 20px;
+  }
 `;
 
 const ModalBg = styled.img`
   width: 100%;
-  /* height: 108px; */
   position: absolute;
   pointer-events: none;
   top: 25%;
@@ -42,21 +49,22 @@ const ModalBg = styled.img`
 const TextModal = styled.p`
   color: var(--color-primary-gold);
   font-size: 35px;
-  font-family: "Milonga";
-  /* margin-top: 150px; */
+  font-family: var(--Milonga);
+
+  @media ${device.mobile}{
+    font-size: 25px;
+  }
 `;
 
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  /* margin-top: 30px; */
   gap: 10px;
   width: 100%;
   align-items: center;
 `;
 
 const SuccessBox = styled.div`
-  /* margin-top: 12px; */
   padding: 10px 14px;
   border-radius: 10px;
   display: flex;
@@ -65,7 +73,7 @@ const SuccessBox = styled.div`
 
 const SuccessText = styled.p`
   color: var(--color-primary-gold);
-  font-family: "Milonga";
+  font-family: var(--Milonga);
   font-size: 16px;
   margin: 5px 0;
 `;
