@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import InputImg from "../assets/images/Input-decor-normal.svg"
-import { device } from "../layout/responsividade.js";
+import InputImg from "../assets/images/Input-decor-normal.svg";
+// import { device } from "../layout/responsividade.js";
 
 const InputWrapper = styled.div`
   width: 100%;
@@ -15,14 +15,10 @@ const Input = styled.input`
   color: var(--color-primary-gold);
   font-size: 24px;
   font-family: "Milonga";
-  padding-left: 12px; 
+  padding-left: 12px;
   background: transparent;
   border: none;
   outline: none;
-
-  /* @media ${device.mobile}{
-    font-size: 20px;
-  } */
 
   &::placeholder {
     color: var(--color-primary-gold);
@@ -38,10 +34,12 @@ export default function InputProps({
   placeholder,
   value,
   onChange,
-  normalizar,
+  normalizar = false,
   $maxWidth,
-  secure,  
+  secure,
 }) {
+  const callback = onChange ?? (() => {});
+
   const handleChange = (e) => {
     let texto = e.target.value;
 
@@ -49,7 +47,7 @@ export default function InputProps({
       texto = texto.replace(/[^A-Za-z0-9]/g, "").toUpperCase();
     }
 
-    onChange(texto);
+    callback(texto);
   };
 
   return (

@@ -11,7 +11,7 @@ import { device } from "../layout/responsividade.js";
 const Overlay = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,20 +31,18 @@ const ModalContent = styled.div`
   padding: 50px 0px 0px 0px;
   border: 2px solid var(--color-primary-gold);
 
-  @media ${device.mobile}{
+  @media ${device.mobile} {
     width: 80%;
     height: 90%;
     padding: 30px 0px 0px 0px;
     gap: 20px;
   }
-  
 `;
 
 const ModalBg = styled.img`
   width: 100%;
   position: absolute;
   top: 25%;
-
 `;
 
 const TextModal = styled.p`
@@ -52,7 +50,7 @@ const TextModal = styled.p`
   font-size: 35px;
   font-family: "Milonga";
 
-  @media ${device.mobile}{
+  @media ${device.mobile} {
     font-size: 28px;
   }
 `;
@@ -66,7 +64,7 @@ const InputWrapper = styled.div`
   margin-top: 20px;
   z-index: 1;
 
-  @media ${device.mobile}{
+  @media ${device.mobile} {
     gap: 15px;
     margin-top: 10px;
   }
@@ -86,7 +84,7 @@ const SuccessText = styled.p`
   font-family: "Milonga";
   font-size: 16px;
   margin: 5px 0px;
-`
+`;
 
 const Divisoria = styled.img`
   width: 200px;

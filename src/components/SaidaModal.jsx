@@ -11,7 +11,7 @@ import PickerPlaca from "./DropdownRNP.jsx";
 const Overlay = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,7 @@ const ModalContent = styled.div`
   padding: 20px 0px 0px 0px;
   border: 2px solid var(--color-primary-gold);
 
-  @media ${device.mobile}{
+  @media ${device.mobile} {
     width: 80%;
     height: 90%;
     padding: 30px 0px 0px 0px;
@@ -51,7 +51,7 @@ const TextModal = styled.p`
   font-size: 35px;
   font-family: var(--Milonga);
 
-  @media ${device.mobile}{
+  @media ${device.mobile} {
     font-size: 25px;
   }
 `;
@@ -100,9 +100,10 @@ export default function ModalSaida({ visible, onConfirm, onCancel }) {
 
   useEffect(() => {
     if (visible) {
-      api.get("/api/veiculos")
-        .then(res => setCarros(res.data))
-        .catch(err => console.error("Erro ao carregar carros:", err));
+      api
+        .get("/api/veiculos")
+        .then((res) => setCarros(res.data))
+        .catch((err) => console.error("Erro ao carregar carros:", err));
     }
   }, [visible]);
 
@@ -136,7 +137,7 @@ export default function ModalSaida({ visible, onConfirm, onCancel }) {
         <InputWrapper>
           <PickerPlaca
             value={placa}
-            onChange={e => setPlaca(e.target.value)}
+            onChange={(e) => setPlaca(e.target.value)}
             carros={carros}
           />
 
@@ -153,9 +154,13 @@ export default function ModalSaida({ visible, onConfirm, onCancel }) {
 
               <SuccessText>Placa: {ultimaSaida.placa}</SuccessText>
               <SuccessText>Entrada: {ultimaSaida.dataEntrada}</SuccessText>
-              <SuccessText>Hora: {ultimaSaida.horarioEntrada?.split(".")[0]}</SuccessText>
+              <SuccessText>
+                Hora: {ultimaSaida.horarioEntrada?.split(".")[0]}
+              </SuccessText>
               <SuccessText>Saída: {ultimaSaida.dataSaida}</SuccessText>
-              <SuccessText>Hora: {ultimaSaida.horarioSaida?.split(".")[0]}</SuccessText>
+              <SuccessText>
+                Hora: {ultimaSaida.horarioSaida?.split(".")[0]}
+              </SuccessText>
               <SuccessText>Preço: R$ {ultimaSaida.valorPago},00</SuccessText>
 
               <Divisoria src={divisoria} />

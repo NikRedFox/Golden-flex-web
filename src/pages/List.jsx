@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/Button.jsx";
 import styled from "styled-components";
 import api from "../api.js";
-import {device} from "../layout/responsividade.js";
+import { device } from "../layout/responsividade.js";
 
 import split from "../assets/images/Divisoria.svg";
 import divisoria from "../assets/images/Linhas-decor.svg";
@@ -10,11 +12,28 @@ import ModalEntrada from "../components/EntradaModal.jsx";
 import ModalSaida from "../components/SaidaModal.jsx";
 
 const ListaContainer = styled.div`
+  position: relative;
   min-height: 100vh;
-  width: 100%;  
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${device.mobile} {
+    padding-top: 40px;
+  }
+`;
+
+const LogoutWrapper = styled.div`
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 50;
+
+  @media ${device.mobile} {
+    left: 8px;
+    top: 8px;
+  }
 `;
 
 const ListaScroll = styled.div`
@@ -27,12 +46,12 @@ const ListaScroll = styled.div`
   overflow-y: auto;
   padding-bottom: 20px;
 
-  @media ${device.tablet}{
+  @media ${device.tablet} {
     grid-template-columns: repeat(2, 1fr);
-
   }
-  
-  @media ${device.mobile}{
+
+  @media ${device.mobile} {
+    max-height: calc(100vh - 300px);
     grid-template-columns: repeat(1, 1fr);
   }
 
@@ -52,10 +71,9 @@ const ListaScroll = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: #d9a74f;
   }
-  
+
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary-gold) transparent;
-
 `;
 
 const Texto = styled.h1`
@@ -65,19 +83,19 @@ const Texto = styled.h1`
   text-align: center;
   font-family: var(--Park-Lane);
 
-  @media ${device.tablet}{ 
+  @media ${device.tablet} {
     padding: 45px 0 6px 0;
-  } 
+  }
 
-  @media ${device.mobile}{ 
-    padding: 45px 0 6px 0;
-  } 
+  @media ${device.mobile} {
+    padding: 55px 0 6px 0;
+  }
 `;
 
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Card = styled.div`
   justify-content: center;
@@ -88,13 +106,13 @@ const Card = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  @media ${device.tablet}{
+  @media ${device.tablet} {
     width: 80%;
     padding-left: 0px;
     align-self: center;
   }
 
-  @media ${device.mobile}{
+  @media ${device.mobile} {
     width: 80%;
     padding-left: 50px;
     align-self: center;
@@ -113,15 +131,15 @@ const Placa = styled.p`
   font-family: var(--Milonga);
   padding-left: 40px;
 
-  @media ${device.tablet}{ 
+  @media ${device.tablet} {
     padding-left: 20px;
     font-size: 18px;
-  } 
+  }
 
-  @media ${device.mobile}{ 
+  @media ${device.mobile} {
     padding-left: 30px;
     padding: 0px;
-  } 
+  }
 `;
 
 const Info = styled.p`
@@ -130,14 +148,14 @@ const Info = styled.p`
   font-family: var(--Milonga);
   padding-left: 40px;
 
-  @media ${device.tablet}{ 
+  @media ${device.tablet} {
     padding-left: 20px;
     font-size: 16px;
-  } 
+  }
 
-  @media ${device.mobile}{ 
+  @media ${device.mobile} {
     padding: 0px;
-  } 
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -160,7 +178,7 @@ const BglessButton = styled.button`
   cursor: pointer;
   width: 150px;
 
-  @media ${device.mobile}{
+  @media ${device.mobile} {
     font-size: 24px;
     width: 120px;
   }
@@ -174,6 +192,8 @@ export default function HomeLista() {
   const [item, setItem] = useState([]);
   const [modalEntradaVisible, setModalEntradaVisible] = useState(false);
   const [modalSaidaVisible, setModalSaidaVisible] = useState(false);
+
+  const navigate = useNavigate();
 
   const abrirModalEntrada = () => setModalEntradaVisible(true);
   const abrirModalSaida = () => setModalSaidaVisible(true);
@@ -192,7 +212,7 @@ export default function HomeLista() {
       try {
         await loadVeiculos();
       } catch (error) {
-        console.log(error);
+        console.error("Erro ao buscar veículos:", error);
       }
     };
 
@@ -209,6 +229,16 @@ export default function HomeLista() {
 
   return (
     <ListaContainer>
+      <LogoutWrapper>
+        <Button
+          texto="Sair"
+          onClick={() => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            navigate("/login");
+          }}
+        />
+      </LogoutWrapper>
       <Texto>Lista</Texto>
 
       <ListaScroll>
